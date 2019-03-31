@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
-import { ChildComponent } from "../child/child.component";
+import { ChildComponent } from '../child/child.component';
+import {DataService} from '../app/data.service';
 
 @Component({
   selector: 'app-parent',
@@ -28,10 +29,13 @@ export class ParentComponent implements OnInit, AfterViewInit {
     this.messageFromOutputChild = $event; 
   }
 
-  constructor() { }
+  messageFromService: string;
+
+  constructor(private data: DataService) { }
 
   ngOnInit() {
     this.messageFromViewChild = this.child.messageFromChild;
+    this.data.currentMessage.subscribe(messageFromService => this.messageFromService = messageFromService)
   }
 
   ngAfterViewInit() {
