@@ -5,4 +5,6 @@
 <h2>Message from Child using @output and event emitter = {{messageFromOutputChild}}</h2>
 
 <app-child [childMessage] = "parentMessage" (messageEvent)= "recieveMessageFromChild($event)"></app-child>  
+
+<h3>Message from service {{messageFromService}}</h3>
 </div>
